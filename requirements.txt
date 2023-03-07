@@ -2,9 +2,7 @@ torch
 torchvision
 torchtoolbox
 timm
-csv
 tqdm
 matplotlib
 numpy
 opencv_python
-pickle
