@@ -259,12 +259,17 @@ def main():
         os.makedirs(save_path)
 
     if args.gpus is not None:
-        if ',' not in args.gpus:
-            device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-        else:
-            args.gpus = [int(i) for i in args.gpus.split(',')]
-            device = 'cuda:' + str(args.gpus[0])
-            cudnn.benchmark = True
+#        # windwos platform
+#         if ',' not in args.gpus:
+#             device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+#         else:
+#             args.gpus = [int(i) for i in args.gpus.split(',')]
+#             device = 'cuda:' + str(args.gpus[0])
+#             cudnn.benchmark = True
+        # linux platform
+        args.gpus = [int(i) for i in args.gpus.split(',')]
+        device = 'cuda:' + str(args.gpus[0])
+        cudnn.benchmark = True
     else:
         device = 'cpu'
 
